@@ -1,0 +1,36 @@
+<div class="content-wrapper">
+	<h2>Show Details</h2>
+	<p>Edit the details of your show here</p>
+	<p>This information appears at your show page - <a ui-sref="kanm.front.shows.detail({id:show.pkey})">click here to see it in action</a></p>
+	<p>If you want to change your <strong>show name</strong> or <strong>time slot</strong>, send an email to the PD.</p>
+	<p><strong>REMEMBER:</strong> This stuff can be seen by anyone who goes on our site.
+		Keep in mind that we are a student organization and need to display <i>some</i> semblance of professionalism</p>
+
+	<h3>Show Description</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<strong>Current Description:</strong>
+			<p>{{ show.ShowDescription || "No description currently"}}</p>
+		</div>
+		<div class="col-md-6">
+			<textarea class="form-control" ng-model="updatedDescription" placeholder="New Description"></textarea>
+			<br>
+			<button class="btn btn-success" ng-disabled="!updatedDescription" ng-click="updateDescription()">Update Description</button>
+		</div>
+	</div>
+	<h3>Show Image</h3>
+	<div class="row">
+		<div class="col-md-6">
+			<div><strong>Current Pic:</strong></div>
+			<img ng-src="{{show.ShowPicture}}" ng-show="show.ShowPicture">
+			<p ng-hide="show.ShowPicture">None</p>
+		</div>
+		<div class="col-md-6">
+			<p><strong>Accepted formats: </strong> .png, .gif, .jpg, .jpeg</p>
+			<span class="btn btn-file btn-success">
+				Upload New Picture
+				<input type="file" file-model="showPic"/>
+			</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<div class='content-wrapper'>
+	<h2>{{show.show.ShowName}}</h2>
+	<p><b>Hosted by: </b><span ng-repeat="host in show.hosts">{{host.firstname}} {{host.lastname}}{{$last ? '' : ', '}}</span></p>
+
+	<p>{{show.show.ShowDescription || ""}}</p>
+	<img src="{{show.show.ShowPicture}}">
+	<div ng-show="sets.length">
+		<h3>Previous Shows</h3>
+		<div ng-repeat="set in sets">
+			<button class="btn btn-default btn-block btn-set" ng-click="set.collapse = !set.collapse">{{set.ts}}</button>
+			<div collapse="set.collapse">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Track</th>
+							<th>Album</th>
+							<th>Artist</th>
+						</tr>
+					</thead>
+					<tr ng-repeat='p in set.playlist track by $index'>
+						<td>{{p.Track}}</td>
+							<td>{{p.Album}}</td>
+							<td>{{p.Artist}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

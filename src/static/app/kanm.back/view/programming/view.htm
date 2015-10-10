@@ -1,0 +1,11 @@
+<div class="content-wrapper">
+	<h1>Programming</h1>
+	<tabset>
+		<tab heading="Shows" ui-sref="kanm.back.programming.show" active="isActive(['kanm.back.programming.show', 'kanm.back.programming.showDetail'])">
+			<div ui-view="auditShow"></div>
+		</tab>
+		<tab heading="Members" ui-sref="kanm.back.programming.dj" active="isActive(['kanm.back.programming.dj'])">
+			<div ui-view="auditDj"></div>
+		</tab>
+	</tabset>
+</div>

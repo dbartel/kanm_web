@@ -1,0 +1,22 @@
+<div class="modal-header">
+	<h3 class="modal-title">Change Show</h3>
+</div>
+<div class="modal-body">
+	<div ng-repeat="show in showList" 
+		class="row" 
+		ng-class="{'table-select-item': show.pkey !== active}"
+		ng-click="selectShow(show.pkey)">
+			<div class="col-md-8">
+				{{ show.name }}
+			</div>
+			<div class="col-md-4">
+					<span class="glyphicon glyphicon-ok"
+							aria-hidden="true"
+							ng-show="show.pkey === active"></span>
+
+			</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="close()">Cancel</button>
+</div>

@@ -1,0 +1,16 @@
+Array for each hour in the week (length 168)
+
+{
+    active: boolean,
+    show: {
+        name,
+        id,
+        time
+    }
+}
+
+.occupied {
+    background: #3a87ad
+    color: white
+    border-top:0
+}

@@ -1,0 +1,29 @@
+<h2>Members</h2>
+<input class="form-control" type="text" ng-model="search" placeholder="Search">
+<br>
+<input type="checkbox" ng-model="filterBad"> <label>Bad DJs only</label>
+<table class="table">
+	<thead>
+		<tr>
+			<th><b>DJ</b></th>
+			<th><b>Email</b></th>
+			<th><b>Strikes</b></th>
+			<th><b>Points</b></th>
+			<th><b>Shirt</b></th>
+			<th><b>Type</b></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="dj in djs | orderBy:'lastname' | filter:search | djAuditFilter:filterBad" 
+			ng-class="{danger: dj.strikes >= 2}"
+			ng-click="auditDj(dj)"
+			class="table-select-item">
+			<td>{{dj.firstname}} {{dj.lastname}}</td>
+			<td><a href="mailto:{{dj.email}}">{{dj.email}}</a></td>
+			<td>{{dj.strikes}}</td>
+			<td>{{dj.points}}</td>
+			<td>{{dj.shirt}}</td>
+			<td>{{dj.showid ? 'DJ': 'General'}}</td>
+		</tr>
+	</tbody>
+</table>

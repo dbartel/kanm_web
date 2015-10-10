@@ -1,0 +1,25 @@
+<div class='content-wrapper'>
+	<div ng-show='playlist.length'>
+		<h2>Now Playing: {{playlist[0].ShowName}}</h4>
+		<h3>Playlist</h3>
+		<table class='table'>
+			<thead>
+				<tr>
+					<td><b>Artist</b></td>
+					<td><b>Album</b></td>
+					<td><b>Track</b></td>
+				</tr>
+			</thead>
+			<tr ng-repeat='song in playlist'>
+				<td>{{song.Artist}}</td>
+				<td>{{song.Album}}</td>
+				<td>{{song.Track}}</td>
+			</tr>
+		</table>
+	</div>
+	<div ng-hide="playlist.length">
+		<h3>There's no show playing right now.</h3>
+		<p>If you listen in you'll be listening to <i>Billy The Auto DJ</i> - our resident DJ automation software. We give no promises as to the quality of his music taste.</p>
+		<a ui-sref='kanm.front.shows.schedule'>Check out our schedule</a> to see when humans play.
+	</div>
+</div>

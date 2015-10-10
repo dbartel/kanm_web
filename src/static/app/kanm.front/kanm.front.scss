@@ -1,0 +1,33 @@
+
+/* imports */
+@import "view/contact/contact.scss";
+@import "view/frequency/frequency.scss";
+@import "view/home/home.scss";
+@import "view/about/about.scss";
+@import "view/show/show.scss";
+@import "view/sidebar/sidebar.scss";
+
+
+
+
+/* Global front styling */
+
+.show-pic {
+    width:90%;
+    height:90%;
+    background:white;
+    margin:0 auto;
+}
+
+.show-pic > img.wide {
+    max-width: 100%;
+    max-height:100%;
+    height:auto;    
+}
+
+.show-pic > img.tall {
+    max-width: 100%;
+    max-height:100%;
+    width:auto;
+}
+

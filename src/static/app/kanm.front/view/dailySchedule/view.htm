@@ -1,0 +1,6 @@
+<div class="container content-wrapper">
+	<tabset type="pills">
+	<tab ng-repeat="tab in tabs" heading="{{tab.heading}}" active="tab.active">
+		<daily-schedule shows="tab.shows" day="{{tab.heading}}"></daily-schedule>
+	</tab>
+</div>

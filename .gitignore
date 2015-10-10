@@ -1,0 +1,15 @@
+src/vendor/
+src/server/composer.lock
+src/server/composer.phar
+dist/
+node_modules
+docs/
+data/
+*.bak
+src/static/components/
+*.*~
+*.swp
+src/wordpress
+src/static/css
+src/api/config.ini
+src/_assets/img

@@ -1,0 +1,22 @@
+<div class="content-wrapper">
+
+	<h1>Current Officers</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<td><strong>Position</strong></td>
+				<td><strong>Name</strong></td>
+				<td><strong>Email</strong></td>
+				<td><strong>Office Hours</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="officer in officers" class='table-select-item'>
+				<td>{{officer.position}}</td>
+				<td>{{officer.name}}</td>
+				<td>{{officer.email}}</td>
+				<td>{{officer.office_hours.join(',')}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

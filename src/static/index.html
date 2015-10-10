@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang='en'>
+<link rel='icon' type='image/png' href='img/logo/trans_med.png'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <title>KANM Student Radio</title>
+
+
+    <!-- build:js scripts/angular.bundle.js -->
+    <script src="/static/components/lodash/lodash.js"></script>
+    <script src="/static/components/angular/angular.js"></script>
+	<script src="/static/components/ui-select/dist/select.js"></script>
+    <script src="/static/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/static/components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/static/components/angular-loading-bar/build/loading-bar.js"></script>
+	<script src="/static/components/angular-sanitize/angular-sanitize.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/app.min.js -->
+    <script src="/static/app/bootstrap.js"></script>
+    <script src="/static/app/app.js"></script>
+
+    <!-- module: kanm.directives -->
+    <script src="/static/app/directive/schedule/schedule.js"></script>
+	<script src="/static/app/directive/dailySchedule/dailySchedule.js"></script>
+    <!-- endmodule -->
+
+    <!-- module: kanm.constant -->
+    <script src="/static/app/constant/index.js"></script>
+    <script src="/static/app/constant/appTypes.js"></script>
+    <script src="/static/app/constant/auth.js"></script>
+    <!-- endmodule -->
+
+    <!-- module: kanm.services -->
+    <script src="/static/app/services/index.js"></script>
+    <script src="/static/app/services/virgins.js"></script>
+    <script src="/static/app/services/timeutils.js"></script>
+    <script src="/static/app/services/authService.js"></script>
+    <script src="/static/app/services/application.js"></script>
+    <script src="/static/app/services/shows.js"></script>
+    <script src="/static/app/services/playlist.js"></script>
+    <script src="/static/app/services/wordpress.js"></script>
+    <script src="/static/app/services/officer.js"></script>
+    <!-- endmodule -->
+
+    <!-- module: kanm.filters -->
+    <script src="/static/app/filter/index.js"></script>
+    <script src="/static/app/filter/excerpt.js"></script>
+    <script src="/static/app/filter/timeDisplay.js"></script>
+    <!-- endmodule -->
+
+    <!-- module: kanm.front -->
+    <script src="/static/app/kanm.front/app.front.js"></script>
+    <script src="/static/app/kanm.front/filters/index.js"></script>
+    <script src="/static/app/kanm.front/filters/trusthtml.js"></script>
+    <script src="/static/app/kanm.front/view/header/controller.js"></script>
+    <script src="/static/app/kanm.front/view/contact/controller.js"></script>
+    <script src="/static/app/kanm.front/view/apply/controller.js"></script>
+    <script src="/static/app/kanm.front/view/frequency/controller.js"></script>
+    <script src="/static/app/kanm.front/view/listen/controller.js"></script>
+    <script src="/static/app/kanm.front/view/home/controller.js"></script>
+    <script src="/static/app/kanm.front/view/post/controller.js"></script>
+    <script src="/static/app/kanm.front/view/schedule/controller.js"></script>
+    <script src="/static/app/kanm.front/view/show/controller.js"></script>
+    <script src="/static/app/kanm.front/view/sidebar/controller.js"></script>
+    <script src="/static/app/kanm.front/view/dailySchedule/controller.js"></script>
+    <!-- endmodule -->
+
+    <!-- module: kanm.back -->
+    <script src="/static/app/kanm.back/app.back.js"></script>
+    <script src="/static/app/kanm.back/filters/index.js"></script>
+    <script src="/static/app/kanm.back/filters/virgin.js"></script>
+    <script src="/static/app/kanm.back/services/index.js"></script>
+    <script src="/static/app/kanm.back/view/menu/controller.js"></script>
+    <script src="/static/app/kanm.back/services/programmingDirector.js"></script>
+    <script src="/static/app/kanm.back/services/playlistManagement.js"></script>
+    <script src="/static/app/kanm.back/services/showManagement.js"></script>
+    <script src="/static/app/kanm.back/services/appManagement.js"></script>
+    <script src="/static/app/kanm.back/view/playlist/controller.js"></script>
+    <script src="/static/app/kanm.back/view/home/controller.js"></script>
+    <script src="/static/app/kanm.back/view/virgins/controller.js"></script>
+    <script src="/static/app/kanm.back/view/programming/controller.js"></script>
+    <script src="/static/app/kanm.back/view/auditDj/controller.js"></script>
+    <script src="/static/app/kanm.back/view/auditShow/controller.js"></script>
+    <script src="/static/app/kanm.back/view/appList/controller.js"></script>
+    <script src="/static/app/kanm.back/view/appDetail/controller.js"></script>
+    <script src="/static/app/kanm.back/view/scheduleManagement/controller.js"></script>
+    <script src="/static/app/kanm.back/view/showDetails/controller.js"></script>
+    <script src="/static/app/kanm.back/view/officers/controller.js"></script>
+    <script src="/static/app/kanm.back/view/auditShowDetail/controller.js"></script>
+    <script src="/static/app/kanm.back/view/showManagement/controller.js"></script>
+    <script src="/static/app/kanm.back/directive/index.js"></script>
+    <script src="/static/app/kanm.back/directive/fileUpload/fileUpload.js"></script>
+    <!-- endmodule -->
+
+    
+    <!-- endbuild -->
+    
+    <!-- build:css styles/styles.min.css -->
+    <link href="/static/components/bootstrap-css-only/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/components/angular-loading-bar/build/loading-bar.css" rel="stylesheet">
+    <link href='/static/components/components-font-awesome/css/font-awesome.css' rel='stylesheet'>
+    <link href='/static/css/app.css' rel='stylesheet'> 
+	<link href='/static/components/ui-select/dist/select.css' rel='stylesheet'>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <div ui-view></div>
+  </body>
+
+</html>
+

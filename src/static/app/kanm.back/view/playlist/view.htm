@@ -1,0 +1,54 @@
+<div class="playlist-page content-wrapper">
+	<form ng-submit="submitTrack()">
+		<h3>Show Page</h3>
+		<div class="row">
+			<div class="col-md-6">
+				<input ng-model="data.artist" placeholder="artist" class="form-control playlist-input" required>
+				<input ng-model="data.album" placeholder="album" class="form-control playlist-input" required>
+				<input ng-model="data.track" placeholder="track" class="form-control playlist-input" required>
+			</div>
+			<div class="col-md-6">
+				<ui-select ng-model="virgin.selected"
+				reset-search-input="false">
+				<ui-select-match placeholder="Select Virgin">
+						{{ $select.selected.Artist }}
+					</ui-select-match>
+					<ui-select-choices repeat="virgin in virgins | filter:$select.search">
+						<div ng-bind-html="virgin.Artist | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+		<div class="btn-group" role="group">
+			<button type="submit" class="btn btn-success">Add Track</button>
+			<button type="button" class="btn btn-default" ng-click="submitStatId()">Submit Station ID</button>
+		</div>
+	</form>
+	<h3>Current Playlist</h3>
+	<div class="panel panel-default">
+		<div class="panel-body">
+		<p>You've played:</p>
+			<ul>
+				<li><b>{{set.info.virgin || 0}}</b> virgins (3 per hour) </li>
+				<li><b>{{set.info.stationid || 0}}</b> station IDs (2 per hour)</li>
+			</ul>
+		</div>
+	</div>
+	<table class='table' ng-show="set.playlist.length > 0">
+		<thead>
+		<tr>
+			<td><b>Artist</b></td>
+			<td><b>Album</b></td>
+			<td><b>Track</b></td>
+			<td>&nbsp;</td>
+		</tr>
+		</thead>
+		<tr ng-repeat='song in set.playlist' ng-class='{nonsong:isNonSong(song)}'>
+			<td>{{song.Artist}}</td>
+			<td>{{song.Album}}</td>
+			<td>{{song.Track}}</td>
+			<td><a ng-click="deleteSong(song.pkey)">Remove</a></td>
+		</tr>
+	</table>
+
+</div>

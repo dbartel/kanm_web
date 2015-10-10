@@ -1,0 +1,63 @@
+<div class="container">
+<h1>{{ show.show.ShowName }}</h3>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Rename Show</h3>
+	</div>
+	<div class="panel-body">
+		<input class="form-control" placeholder="name" ng-model="newShowName">
+		<br>
+		<button class="btn btn-success btn-sm" ng-click="renameShow()" ng-disabled="!newShowName">Rename</button>
+	</div>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Change Time</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table">
+			<tr>
+				<td><b>Day</b></td>
+				<td><select ng-model="data.day"
+							ng-options="index as day for (index, day) in sched.days"
+							ng-change="updatePickedTime()"></select></td>
+			</tr>
+			<tr>
+				<td><b>Time</b></td>
+				<td><select ng-model="data.time"
+							ng-options="key as time for (key, time) in sched.times"
+							ng-change="updatePickedTime()"></select></td>
+			</tr>
+			<tr>
+				<td><b>Duration</b></td>
+				<td><select ng-model="data.duration"
+							ng-options="hr as hr for hr in sched.duration"
+							ng-change="updatePickedTime()"></select></td>
+			</tr>
+		</table>
+		<button class="btn btn-primary" ng-click="updateTime()" ng-disabled="!pickedTime">Update</button>
+	</div>
+</div>
+
+<h4>DJs</h4>
+<label>Add DJ</label>
+<select ng-model="data.newDj" >
+	<option ng-repeat="dj in djs" value="{{dj.pkey}}">{{dj.firstname}} {{dj.lastname}}</option>
+</select>
+	<button class="btn btn-default" ng-click="addDj()" ng-disabled="!data.newDj">Add</button>
+	<h4>Current</h4>
+	<div class="row" ng-repeat="dj in show.hosts">
+		<div class="col-md-6">
+			{{ dj.firstname }} {{ dj.lastname }} 
+		</div>
+		<div class="col-md-6">
+			<button type="button" class="close" aria-label="Close" ng-click="removeDj(dj.pkey)"><span aria-hidden="true">&times;</span></button>
+		</div>
+	</div>
+	<div>
+		<button class="btn btn-primary" ng-click="goBack()">Go back</button>
+		<button ng-click="removeShow()" class="btn btn-danger">Delete Show</button>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class='content-wrapper'>
+	<h1>Frequency</h1>
+	<div>
+		<div ng-repeat="post in paginatedPosts track by $index" 
+			class="row frequency-preview">
+			<div class="col-md-4">
+				<img src="{{post.featured_image.source}}" class="frequency-thumb">
+			</div>
+			<div class="col-md-8">
+				<h3 ng-bind-html='post.title | trusthtml'></h3>
+				<div ng-bind-html="post.excerpt | excerpt | trusthtml"></div>
+				<a ui-sref="kanm.front.frequency.post({id:post.ID})" class="lead">Read more</a>
+			</div>
+		</div>
+		<pagination total-items="posts.length" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+	</div>
+</div>

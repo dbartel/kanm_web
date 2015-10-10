@@ -1,0 +1,176 @@
+/* Variables */
+
+$white: #FEFEFE;
+
+/* Variables */
+
+/* imports */
+@import "kanm.front/kanm.front";
+@import "kanm.back/kanm.back";
+@import "directive/schedule/schedule";
+@import "view/header/header";
+
+
+/* Global App styling */
+
+.loginBox {
+    display:none;
+}
+
+body {
+    margin: auto;
+    padding-top:70px;
+    background-color:$white;
+}
+
+.center-text{
+	text-align: center;
+}
+
+
+.center-image{
+    display: block;
+    margin: auto;
+}
+
+.content-wrapper{
+    margin: auto;
+    margin-left: 50px;
+}
+
+@media screen and (max-width: 480px) {
+    .content-wrapper {
+        width:400px;
+    }
+    .preview-image {
+        max-width:400px;
+        max-height:400px;
+        margin: auto;
+        display:block;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .content-wrapper {
+        width:200px;
+    }
+    .preview-image {
+        max-width:200px;
+        max-height:400px;
+        margin: auto;
+        display:block;
+    }        
+}
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.accordion-toggle{
+    cursor:pointer;
+}
+
+.navbar-inverse {
+    background: #212121;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #212121;
+    border-right: 1px solid #eee;
+    margin-top:-10px;
+    width: 10%;
+  }
+
+  .sidebar-full {
+    top:0;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+    .main {
+        padding-bottom: 60px;
+    }
+}
+
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color:#03A9F4;
+}
+
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+  color:#777;
+}
+
+.navbar-nav > li > a {
+    -webkit-transition: background-color 0.5s linear, color 0.5s linear;
+    -moz-transition: background-color 0.5s linear, color 0.5s linear;
+    -o-transition: background-color 0.5s linear, color 0.5s linear;
+    -ms-transition: background-color 0.5s linear, color 0.5s linear;
+    transition: background-color 0.5s linear, color 0.5s linear;    
+
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #03A9F4;
+}
+
+.nav-sidebar > li > a:hover, .nav-sidebar > li > a:focus {
+    background-color:#03A9F4;
+    color:white;
+}
+
+
+.table-select-item:hover {
+    background-color:#03A9F4;
+    cursor: pointer;
+    color:white;
+}

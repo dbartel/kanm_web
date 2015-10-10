@@ -1,0 +1,17 @@
+<nav class='navbar navbar-inverse navbar-fixed-top'>
+	<div class='container-fluid'>
+		<ul class='nav navbar-nav'>
+			<li><a class='hidden-xs' ui-sref='kanm.front.nowplaying'><b>Now Playing:</b> {{nowPlaying || "Billy The Auto DJ"}}</a></li>
+			<li> 
+				<audio id='stream' src='http://kanm.org:4040/listen' type='audio/mpeg'></audio>
+				<a  id="audiobutton" href ng-click='toggleAudio()' >
+					<span class='glyphicon {{audioIcon}}'>&nbsp;Listen</span>
+				</a>
+			</li>
+		</ul>
+		<ul class='nav navbar-nav navbar-right hidden-sm hidden-xs'>
+			<li><img id='tamulogo' src='_assets/img/logo/tamulogo.png'></li>
+		</ul>
+	</div>
+</nav>
+<div ui-view></div>

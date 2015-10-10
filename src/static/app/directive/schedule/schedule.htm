@@ -1,0 +1,23 @@
+<table class="table sched">
+    <thead>
+        <th>&nbsp;</th>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in schedule">
+            <td>{{ row.time }}</td>
+            <td ng-repeat="show in row.shows track by $index" 
+                ng-class="{ scheduled: show.scheduled, hour: show.hour }" 
+                alt="{{ show.name }}"
+                ng-click="cb(show)">
+                <span tooltip="{{show.name}}">{{show.name}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" ng-click="navCollapsed = !navCollapsed">
+			<span class="sr-only">Toggle Nav</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<div class="container-fluid" collapse="navCollapsed">
+		<ul class="nav navbar-nav">
+			<li ng-class="{active:isActive(['kanm.front.home'])}"><a ui-sref='kanm.front.home'>Home</a></li>
+			<li ng-class="{active:isActive(['kanm.front.about'])}"><a ui-sref='kanm.front.about'>About</a></li>
+			<li ng-class="{active:isActive(['kanm.front.contact'])}"><a ui-sref="kanm.front.contact">Contact</a></li>
+			<li dropdown ng-class="{active:isActive(['kanm.front.shows.day', 'kanm.front.shows.schedule', 'kanm.front.shows.detail'])}">
+				<a href dropdown-toggle id="schedule-dropdown">Schedule <span class="caret"></span></a>
+				<ul class="dropdown-menu" aria-labelledby="schedule-dropdown">
+					<li><a ui-sref="kanm.front.shows.schedule">Full</a></li>
+					<li><a ui-sref="kanm.front.shows.day">Daily</a></li>
+				</ul>
+			</li>
+			<li ng-class="{active:isActive(['kanm.front.nowplaying'])}"><a ui-sref='kanm.front.nowplaying'>Listen</a></li>
+			<li ng-class="{active:isActive(['kanm.front.frequency.list', 'kanm.front.frequency.post'])}"><a ui-sref='kanm.front.frequency.list'>Frequency</a></li>
+			<li ng-class="{active:isActive(['kanm.front.apply'])}"><a ui-sref='kanm.front.apply'>Apply</a></li>
+			<li><a ui-sref="kanm.back.dashboard">DJ Login</a></li>
+			<li><a href="/index.php/logout" ng-show='loggedIn'>Logout</a></li>
+		</ul>
+	</div>
+</nav>
+
+

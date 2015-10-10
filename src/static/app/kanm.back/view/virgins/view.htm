@@ -1,0 +1,29 @@
+<div class="content-wrapper">
+	<h3>Virgin Rack <button class="btn btn-default pull-right" ng-click="addVirgin()" ng-if="officerAccess">Add Virgin</button></h3>
+
+	<form>
+		<input class="form-control" type="text" ng-model="search.$" placeholder="Search"></input>
+		<label>Filter By Genre:</label>
+	</form>
+	
+	<table class='table'>
+		<thead>
+			<tr>
+				<td><b>Artist</b></td>
+				<td><b>Album</b></td>
+				<td><b>Genre</b></td>
+				<td>&nbsp;</td>
+			</thead>
+		<tbody>
+			<tr ng-repeat='v in virgins | filter:search track by $index' 
+			ng-click='viewDetails(v)' class='dj-table-row'>
+				<td>{{v.Artist}}</td>
+				<td>{{v.Album}}</td>
+				<td>{{v.genre}}</td>
+				<td>{{v.review}}</td>
+				<td ng-if="officerAccess"><a href ng-click="removeVirgin(v)">Remove</a>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

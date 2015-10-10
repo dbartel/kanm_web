@@ -1,0 +1,21 @@
+
+.scheduled {
+    background: #3a87ad;
+    color:white;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.hour {
+	border-top:0 !important;
+}
+
+.scheduled:hover {
+    cursor:pointer;
+}
+
+.sched {
+    table-layout: fixed;
+}

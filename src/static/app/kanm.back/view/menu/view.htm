@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse navbar-fixed-top visible-xs">
+	<div class="container">
+		<ul class="nav navbar-nav">
+			<li dropdown>
+				<a dropdown-toggle href>Navigation <b class="caret"></b></a>			
+				<ul class="dropdown-menu">
+					<li ng-class="{active:isActive(['kanm.back.dashboard'])}"><a  ui-sref='kanm.back.dashboard'>Dashboard</a></li>
+					<li ><a  ui-sref='kanm.front.home'>Back To KANM.org</a></li>
+					<li ng-class="{active:isActive(['kanm.back.playlist'])}"><a  ui-sref='kanm.back.playlist'>Start Show</a></li>
+					<li ng-class="{active:isActive(['kanm.back.showDetails'])}"><a  ui-sref='kanm.back.showDetails'>Show Details</a></li>
+					<li ng-class="{active:isActive(['kanm.back.frequency'])}"><a  ui-sref='kanm.back.frequency'>Frequency</a></li>
+					<li ng-class="{active:isActive(['kanm.back.virgins'])}"><a ui-sref='kanm.back.virgins'>Virgins</a></li>
+					<li ng-class="{active:isActive(['kanm.back.officers'])}"><a ui-sref="kanm.back.officers">Officers</a></li>
+					<li ng-if='officerAccess' ng-class="{active:isActive(['kanm.back.apps.list', 'kanm.back.apps.detail'])}"><a  ui-sref='kanm.back.apps.list'>Applications</a></li>
+					<li ng-if='officerAccess' ng-class="{active:isActive(['kanm.back.shows.schedule'])}"><a ui-sref='kanm.back.shows.schedule'>Schedule</a></li>
+					<li ng-if='officerAccess' ng-class="{active:isActive(['kanm.back.programming.show', 'kanm.back.programming.dj'])}"><a ui-sref='kanm.back.programming.show'>Programming</a></li>
+					<li><a href="/index.php/logout">Logout</a></li>
+				</ul>
+			</li>
+		</ul>		
+	</div>
+</nav>
+
+<div class="container-fluid">
+
+
+	<div class="row">
+		<div class="col-sm-3 col-sm-1 sidebar sidebar-full hidden-xs">
+			<ul class="nav nav-sidebar">
+					<li ng-class="{active:isActive(['kanm.back.dashboard'])}"><a  ui-sref='kanm.back.dashboard'>Dashboard</a></li>
+					<li ><a  ui-sref='kanm.front.home'>Back To KANM.org</a></li>
+					<li ng-class="{active:isActive(['kanm.back.playlist'])}"><a  ui-sref='kanm.back.playlist'>Start Show</a></li>
+					<li ng-class="{active:isActive(['kanm.back.showDetails'])}"><a  ui-sref='kanm.back.showDetails'>Show Details</a></li>
+					<li ng-class="{active:isActive(['kanm.back.frequency'])}"><a  ui-sref='kanm.back.frequency'>Frequency</a></li>
+					<li ng-class="{active:isActive(['kanm.back.virgins'])}"><a ui-sref='kanm.back.virgins'>Virgins</a></li>
+					<li ng-class="{active:isActive(['kanm.back.officers'])}"><a ui-sref="kanm.back.officers">Officers</a></li>
+					<li ng-if='officerAccess' ng-class="{active:isActive(['kanm.back.apps.list', 'kanm.back.apps.detail'])}"><a  ui-sref='kanm.back.apps.list'>Applications</a></li>
+					<li ng-if='officerAccess' ng-class="{active:isActive(['kanm.back.shows.schedule'])}"><a ui-sref='kanm.back.shows.schedule'>Schedule</a></li>
+					<li ng-if='officerAccess' ng-class="{active:isActive(['kanm.back.programming.show', 'kanm.back.programming.dj'])}"><a ui-sref='kanm.back.programming.show'>Programming</a></li>
+					<li><a href="/index.php/logout">Logout</a></li>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main no-header">
+			<div ui-view></div>
+		</div>
+	</div>
+</div>

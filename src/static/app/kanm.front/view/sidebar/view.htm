@@ -1,0 +1,39 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-sm-1 sidebar hidden-xs">
+			<ul class="nav nav-sidebar">
+				<li><img class="img-responsive nav-image" src="/_assets/img/logo/trans_med.png">
+				</li>
+				<li>
+					<audio id='stream' src='http://kanm.org:4040/listen' type='audio/mpeg'></audio>
+					<a id="audiobutton" href ng-click='toggleAudio()' >
+						<span class='glyphicon {{audioIcon}}'></span>
+					</a>
+					<input type="range" ng-model="volume" min="0" max="100" ng-change="changeVolume()">
+				</li>
+				<li class="nav-text">Now Playing:
+				</li>
+				<li class="nav-text" ng-hide="track">Billy the Auto-DJ</li>
+				<li class="nav-text playlist-track">{{track}}</li>
+				<li class="nav-text playlist-artist">{{artist}}</li>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+			<div ui-view></div>
+		</div>
+		<footer class="footer visible-xs">
+			<div class="container">
+					<p class="footer-text">
+						<a href ng-click="toggleAudio()">
+							<span class='glyphicon {{audioIcon}}'></span>
+						</a>
+						Now Playing:
+						<span ng-hide="track" >Billy the Auto-DJ</span>
+						<span class="playlist-track">{{track}}</span>
+						<span class="playlist-artist">{{artist}}</span>
+					</p>
+				</ul>
+			</div>
+		</footer>
+	</div>
+</div>

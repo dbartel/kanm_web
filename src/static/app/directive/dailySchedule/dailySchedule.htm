@@ -1,0 +1,14 @@
+<h1>{{day}}</h1>
+<hr>
+<div class="row" ng-repeat="show in shows">
+	<div class="col-md-8">
+		<h3><a ui-sref="kanm.front.shows.detail({id:show.showid})">{{show.showName}}</a></h3>
+		<p class="text-muted">{{show.timeslot | timecode:true}}</p>
+		<p><i>Hosted by</i> <span ng-repeat="host in show.hosts">{{host.firstName}} {{host.lastName}}{{$last ? '' : ', '}}</span>
+		<p>{{show.description}}</p>
+	</div>	
+	<div class="col-md-4">
+		<img ng-src="{{show.picture}}" class="img-responsive">
+	</div>
+</div>
+

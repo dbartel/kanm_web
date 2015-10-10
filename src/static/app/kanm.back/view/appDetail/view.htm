@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+	<div class="bg-warning" ng-show="app.status == 'ADDED'">
+		<p class="lead">This app has already been added. If you want to edit it's time/name, go to the <a ui-sref="kanm.back.schedule">schedule management</a> page</p>
+	</div>
+
+	<h1>{{ app.show.name }}</h1>
+	<p><b>Hosts:</b> <span ng-repeat="host in app.cohosts">{{host.name}}{{$last ? '' : ', '}}</span>
+	<p>{{app.show.description || "No description given"}}</p>
+	<p><b>Genres: </b> <span ng-repeat="genre in app.show.genres track by $index">{{ genre }}</span></p>
+	<div class="row">
+		<div class="col-md-6">
+			<h2>Bands</h2>
+			<ul>
+				<li ng-repeat="band in app.show.bands track by $index">
+					{{ band }}
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6" ng-show="app.status != 'ADDED'">
+			<h2>Times</h2>
+			<ul ng-show="app.status != 'ADDED'">
+				<li ng-repeat="time in app.show.times">
+					{{ time | timecode }} <a href ng-click="addShow(time)">Add Show with this time</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h3>Add Show</h3>
+			<table class="table">
+				<tr>
+					<td><b>Day</b></td>
+					<td><select ng-model="data.day"
+								ng-options="index as day for (index, day) in sched.days"
+								ng-change="updatePickedTime()"></select></td>
+				</tr>
+				<tr>
+					<td><b>Time</b></td>
+					<td><select ng-model="data.time"
+								ng-options="key as time for (key, time) in sched.times"
+								ng-change="updatePickedTime()"></select></td>
+				</tr>
+				<tr>
+					<td><b>Duration</b></td>
+					<td><select ng-model="data.duration"
+								ng-options="hr as hr for hr in sched.duration"
+								ng-change="updatePickedTime()"></select></td>
+				</tr>
+			</table>
+			<p ng-show="pickedTime"><b>Picked Time:</b> {{ pickedTime | timecode }}</p>
+			<button class="btn btn-primary" ng-click="addShow()" ng-disabled="app.status === 'ADDED'">Add Show</button>
+		</div>
+	</div>	
+</div>

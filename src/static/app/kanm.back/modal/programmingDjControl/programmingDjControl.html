@@ -1,0 +1,18 @@
+<div class="modal-header">
+	<h3 class="modal-title">{{ dj.firstname }} {{ dj.lastname }}</h3>
+</div>
+<div class="modal-body">
+	<h3>Info</h3>
+	<ul>
+		<li><b>Email: </b> <a href="mailto:{{ dj.email }}">{{ dj.email }}</a></li>
+		<li><b>Strikes:</b> {{ dj.strikes }}</li>
+		<li><b>Points:</b> {{ dj.points }}</li>
+	</ul>
+<div class="modal-footer">
+	<div class="btn-group">
+		<button class="btn btn-success" ng-click="addPoints()">Add Points</button>
+		<button class="btn btn-warning" ng-click="addStrike()">Add Strike</button>
+		<button class="btn btn-danger" ng-click="deleteDj()">Delete DJ</button>
+		<button class="btn btn-primary" ng-click="close()">Close</button>
+	</div>
+</div>

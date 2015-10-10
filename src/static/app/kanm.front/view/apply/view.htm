@@ -1,0 +1,260 @@
+
+<div class='content-wrapper'>
+
+	<div>
+			<h2>Important Information</h2>
+			<p>
+				KANM's goal is to be one of the best college radio stations in the country. We strive to provide programming that will expand our listeners' musical horizons and provide an outlet for music ignored by commercial radio.
+			</p>
+			<p>
+				We are looking for DJs who are willing to take chances and play new and old music they may not have been exposed to before, and to branch out and expand their own tastes in music. You don't have to be a musicologist, but we aren't looking for DJs who play the same 20 bands every show.
+			</p>
+			<p>  
+				If you are a new applicant, we will initially judge you only from your list of bands provided on the application. You do not need any prior on-air or formal communications experience.
+			</p>
+			<p>
+				If you are granted a timeslot, you will be given a show on a TRIAL basis for two weeks. We will look at your playlists and behavior from these shows and determine whether we think you should be granted a regular show.
+			</p>
+			<p>  
+				<i>Important note to current and former DJs:</i> We will be considering your past playlists, attendance, and behavior in addition to the information on this application. 
+			</p>
+			<b>If you have any problems with the application send an email to</b> <a href="mailto:dan.m.bartel@gmail.com">dan.m.bartel@gmail.com</a>
+	</div>
+	<hr>
+	<alert type="warning">
+		<p>If you are a returning DJ and want the same time slot please say so in the "Show Description field" and select the time choice</p>
+		<p>Due to some loss of data, we won't be able to auto-add returning DJ's who want the same timeslot. Sorry!</p>
+	</alert>
+	<alert type='warning' ng-if='data.applicant.appid && !cohost'>
+		<h2>You've already submitted an application</h2>
+		<p ng-hide="data.applicant.appType === 'GENERAL'">Your app id (for cohosts) is <b>{{data.applicant.appid}}</b>. 
+			
+		</p>
+		<p>
+			If you change any information and submit again, your application will be updated accordingly
+		</p>
+		<button class="btn btn-danger" ng-click="deleteApp()">Click here to delete your application</button>
+		<p ng-hide="data.applicant.appType === 'GENERAL'">Note: if you have a cohost, their application will not be removed</p>
+	</alert>
+
+
+	<form role="form" ng-submit="submit()">
+		<div id="applicant-info">
+			<h2>Basic Information</h2>
+			<div class='row'>
+				<div class='col-md-6'>
+					<strong>First Name</strong> <input type='text' ng-model='data.applicant.firstName' class='form-control' required>
+				</div>
+				<div class='col-md-6'>
+					<strong>Last Name</strong> <input type='text' ng-model='data.applicant.lastName' class='form-control' required>
+				</div>
+			</div>
+			<br>
+			<strong>Email</strong><input type='text' ng-model='data.applicant.email' class='form-control' required>
+			<div class="row">
+				<div class="col-md-6">
+					<div><strong>Graduating Year</strong></div>
+					<br>
+					<div><strong>Shirt Size</strong></div>
+				</div>
+				<div class="col-md-6">
+					<div>
+						<select ng-model='data.applicant.year' ng-options='year for year in years'></select>
+					</div>
+					<br>
+					<div>
+						<select ng-model="data.applicant.shirt" ng-options="shirt for shirt in shirts"></select>
+					</div>
+				</div>
+			</div>
+			<br>
+			<strong>UIN</strong>
+			<input type='text' ng-model='data.applicant.uin'class='form-control' required>
+			<br>
+			<hr>
+		</div>
+
+		<div id="applicant-type">
+			<h2>Application Type</h2>
+			<div class='row' ng-repeat="type in appTypes">
+				<div class='col-md-4'>
+						<input type="radio" ng-model="data.applicant.appType" value="{{type.value}}"> {{type.name}}
+				</div>
+				<div class='col-md-8'>
+					<p>{{type.desc}} <span ng-if="type.value === 'RETURNING_SAME'">({{ returningTime | timecode }})</span></p>
+				</div>
+			</div>
+		</div>
+
+		<div ng-hide="hideCohostField()">
+			<hr>
+			<h2>Co-Host</h2>
+			<p>If you are co-hosting a show with a DJ who has already filled out an application, please enter the application ID from them. The rest of the application will be auto-filled for you.
+			</p>
+			<input type='text' ng-model='existingId' class='form-control' placeholder="App Id"><br>
+			<button type="button" class='btn btn-success' ng-click='lookupId()'>Lookup ID</button><br><br>
+			<alert type='warning' ng-show='cohost' >
+				<p>You are applying to be a cohost with {{cohost.name}} for the show {{cohost.showName}}</p>
+				<p><a href ng-click="removeCohost()">Click here</a> to reset your app if this is a mistake</p>
+			</alert>
+		
+		<div>
+		<div ng-hide="cohost">
+			<hr>
+			<h2>Show Information</h2>
+			<h3>Show Name</h3>
+			<p>Cool points for creativity and originality</p>
+			<input type='input' ng-model='data.show.name' placeholder='Show Name' class='form-control' ng-required="data.applicant.appType != 'GENERAL'">
+			<h3>Show Description</h3>
+			<p>What is your show about? Why should we give you a show? Put anything you think is important here.</p>
+			<textarea ng-model='data.show.description' class='form-control' rows='3' ng-required="data.applicant.appType != 'GENERAL'"></textarea>
+
+			<h3>Genres</h3>
+			<div class='row'>
+				<div class='col-md-8'>
+					<p>Select up to three genres that <b>best</b> describe the style of music you'll be playing</p>
+					<select ng-model='genreSelect'>
+						<option selected='selected'>Indie Rock</option>
+						<option>Hip Hop</option>
+						<option>Electronic</option>
+						<option>Metal</option>
+						<option>Punk/Hardcore</option>
+					</select> <button type="button" class='btn btn-default btn-xs' ng-click='addGenre()'>Add Genre</button>
+				</div>
+				<div class='col-md-4'>
+					<h4 ng-show='data.show.genres.length>0'>Picked Genres:</h4>
+					<div class='row' ng-repeat='picked in data.show.genres track by $index'>
+						<div class='col-md-10'>
+							{{picked}} 
+						</div>
+						<div class='col-md-2'>
+							<button type="button" class="close" aria-label="Close" ng-click="removeItem($index, data.show.genres)"><span aria-hidden="true">&times;</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<h3>Bands</h3>
+					<p>List 5 bands that you would play if you had a show at KANM. 
+						Try to think of music that would best capture what your show is about.
+						Note: If you list popular stuff we probably won't like it.
+					</p>      
+			<div class='row'>
+				<div class='col-md-4'>
+					<input type='input' ng-model='bandInput' class='form-control'>
+					<br>
+					<button type="button" class='btn btn-default' ng-click='addBand()'>Add Band</button>
+				</div>
+				<div class='col-md-8'>
+					<h4 ng-show='data.show.bands.length>0'>Bands</h4>
+					<div class='row' ng-repeat='added in data.show.bands track by $index'>
+						<div class='col-md-10'>
+						{{added}} </div>
+						<div class='col-md-2'><button type="button" class="close" aria-label="Close" ng-click="removeItem($index, data.show.bands)"><span aria-hidden="true">&times;</span></button></div>
+
+					</div>
+				</div>
+			</div>
+			<div ng-hide="data.applicant.appType === 'RETURNING_SAME'">
+				<h3>Time</h3>
+				<p>Select 8 times, in order of importance. Keep in mind that returning (and well-behaved) DJs will have priority over newer DJs.</p>
+				<div>
+					Day
+					<select ng-model='daySelect'>
+						<option selected='selected' value='1'>Monday</option>
+						<option value='2'>Tuesday</option>
+						<option value='3'>Wednesday</option>
+						<option value='4'>Thursday</option>
+						<option value='5'>Friday</option>
+						<option value='6'>Saturday</option>
+						<option value='0'>Sunday</option>
+					</select>
+					Time
+					<select ng-model='timeSelect'>
+						<option selected='selected' value='00'>12:00 AM</option>
+						<option selected='selected' value='01'>1:00 AM</option>
+						<option selected='selected' value='02'>2:00 AM</option>
+						<option selected='selected' value='03'>3:00 AM</option>
+						<option selected='selected' value='04'>4:00 AM</option>
+						<option selected='selected' value='05'>5:00 AM</option>
+						<option selected='selected' value='06'>6:00 AM</option>
+						<option selected='selected' value='07'>7:00 AM</option>
+						<option selected='selected' value='08'>8:00 AM</option>
+						<option selected='selected' value='09'>9:00 AM</option>
+						<option selected='selected' value='10'>10:00 AM</option>
+						<option selected='selected' value='11'>11:00 AM</option>
+						<option selected='selected' value='12'>12:00 PM</option>
+						<option selected='selected' value='13'>1:00 PM</option>
+						<option selected='selected' value='14'>2:00 PM</option>
+						<option selected='selected' value='15'>3:00 PM</option>
+						<option selected='selected' value='16'>4:00 PM</option>
+						<option selected='selected' value='17'>5:00 PM</option>
+						<option selected='selected' value='18'>6:00 PM</option>
+						<option selected='selected' value='19'>7:00 PM</option>
+						<option selected='selected' value='20'>8:00 PM</option>
+						<option selected='selected' value='21'>9:00 PM</option>
+						<option selected='selected' value='22'>10:00 PM</option>
+						<option selected='selected' value='23'>11:00 PM</option>
+					</select>
+					Duration
+					<select ng-model='durationSelect'>
+						<option value='1'>One hour</option>
+						<option selected='selected' value='2'>Two hours</option>
+					</select>
+					<button type="button" class='btn btn-default btn-xs' ng-click='addTime()'>Add Time</button>
+				</div>
+				<div>
+					<h4 ng-show="data.show.times.length>0">Picked Times</h4>
+					<div ng-repeat='time in data.show.times track by $index'>
+							{{time | timecode }}
+							<button type="button" class="close" aria-label="Close" ng-click="removeItem($index, data.show.times)"><span aria-hidden="true">&times;</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<hr>
+		</div>
+		 <alert ng-show='submitSuccess' type='success'>
+				Your application has been submitted! <span ng-hide="data.applicant.appType === 'GENERAL'">Your Application Id is {{appId}}. Give this to your cohosts so they can apply to be part of your show</span>
+		</alert>
+
+		<p class="lead">Here is what you have entered. Please make sure all your information is correct before hitting submit:</p>
+		<div class='panel panel-default'>
+			<div class='panel-heading'>
+				{{data.applicant.firstName}} {{data.applicant.lastName}}
+			</div>
+			<div class='panel-body'>
+				<div class='row'>
+					<div class='col-md-6'>
+				<b>Personal</b>
+						<ul>
+							<li><b>Email: </b>{{data.applicant.email}}</li>
+							<li><b>Year: </b>{{data.applicant.year}}</li>
+							<li><b>UIN: </b>{{data.applicant.uin}}</li>
+							<li><b>App Type: </b>{{data.applicant.appType}}</li>
+							<li><b>Shirt: </b>{{data.applicant.shirt}}</li>
+						</ul>
+						<div ng-show='data.applicant.appType != "GENERAL"'>
+						<b>Show</b>
+							<ul>
+								<li><b>Show Name: </b>{{data.show.name}}</li>
+								<li><b>Show Description: </b>{{data.show.description}}</li>
+							</ul>
+						</div> 
+					</div>
+					<div class='col-md-6' ng-show='data.applicant.appType != "GENERAL"'>
+						<b>Picked Times</b>
+						<ul>
+							<li ng-repeat='time in data.show.times track by $index'>{{time | timecode}}</li>
+						</ul>
+						<b>Bands</b>            
+						<ul>
+							<li ng-repeat='band in data.show.bands track by $index'>{{band}}</li>
+						</ul>           
+					</div>
+				</div>
+				<input class='btn btn-success' type="submit" value="Submit Application"></input>
+			</div>
+		</div>
+	 </form>
+</div>

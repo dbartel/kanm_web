@@ -1,0 +1,1 @@
+angular.module("kanmApp.back.directive", []);

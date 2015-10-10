@@ -1,0 +1,47 @@
+<div class="content-wrapper">
+    <br>
+    <div>
+        <h1>You are logged in as {{user.firstname}} {{user.lastname}}</h1>
+		<p ng-show="shows.length > 1">You are currently logging shows for <i>{{ activeShow }}</i>. <a href ng-click="changeShow()">Click here to switch shows.</a></p>
+        <p>This page contains all the controls available to you as a DJ of KANM. Your available options are over there on the side. 
+            If you run into any problems, email the webmaster at <a href='mailto:dan.m.bartel@gmail.com'>dan.m.bartel@gmail.com</a>
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>You have</h3>
+                <ul>
+                    <li><strong>{{user.points}}</strong> points.</li>
+                    <li><strong>{{user.strikes}}</strong> strikes</li>
+                </ul>                
+            </div>
+            <div class="col-md-6">
+                <h3>Important Documents</h3>
+                <ul>
+                    <li><a href='/doc/Policy_Sheet.docx'>Policy Sheet</a></li>
+                    <li><a href='/doc/KANM_Operations_Manual.pdf'>Operations Manual</a></li>
+                </ul>                
+            </div>
+        </div>
+	    <h3>Calendar</h3>
+	    <iframe src="https://www.google.com/calendar/embed?src=kanmpr%40gmail.com&ctz=America/Chicago&showTitle=0&amp" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+        <h3>Office Hours</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><strong>Position</strong></td>
+                    <td><strong>Name</strong></td>
+                    <td><strong>Office Hours</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="officer in officers">
+                    <td>{{officer.position}}</td>
+                    <td>{{officer.name}}</td>
+                    <td>{{officer.office_hours.join(',')}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

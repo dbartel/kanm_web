@@ -1,0 +1,18 @@
+<h2>Shows</h2>
+<p>Click on a show to audit its playlists, or strike it</p> 
+<table class="table">
+	<thead>
+		<tr>
+			<th>Show</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="show in shows track by $index"
+			ng-class="{danger: show.reason.length}"
+			ui-sref="kanm.back.programming.showDetail({id:show.showId})">
+			<td>{{show.name}}</td>
+			<td>{{show.reason}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,21 @@
+
+.officer-grid {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.officer-block {
+  word-wrap: break-word;
+  width: 200px;
+  margin: 5px;
+}
+
+.officer-block > img {
+    width:200px;
+    height:200px;
+}
+
+.officer-block > p {
+	margin:0;
+}
+

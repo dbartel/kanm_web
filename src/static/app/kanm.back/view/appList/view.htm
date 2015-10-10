@@ -1,0 +1,36 @@
+<div class="content-wrapper">
+	<h1>Apps</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Bulk Actions</h3>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" role="group">
+				<button class="btn btn-primary" ng-click="addReturning()">Add Returning DJs (same time slot)</button>
+				<button class="btn btn-primary" ng-click="addGeneral()">Add all general members</button>
+				<button class="btn btn-danger" ng-click="deleteAll()">Delete All Apps</button>
+			</div>
+
+		</div>
+	</div>
+	<div>
+		<input type="text" class="form-control" ng-model="search" placeholder="Search">
+		<table class="table">
+			<thead>
+				<tr>
+					<td><strong><a ng-click="sortType = 'show.name'; sortReverse = !sortReverse" >Show Name</a></strong></td>
+					<td><strong>Hosts</strong></td>
+					<td><strong><a ng-click="sortType = 'appType'; sortReverse = !sortReverse" >Type</a></strong></td>
+					<td><strong><a ng-click="sortType = 'status'; sortReverse = !sortReverse" >Status</a></strong></td>
+				</tr>
+			<tbody>
+				<tr ng-repeat="app in apps | orderBy:sortType:sortReverse | filter:search" ui-sref="kanm.back.apps.detail({id:app.id})" class="table-select-item" ng-class="{info: app.status === 'ADDED'}">
+					<td>{{app.show.name || "none"}}</td>
+					<td><span ng-repeat="host in app.cohosts">{{host.name}}{{$last ? '' : ', '}}</span></td>
+					<td>{{app.appType}}</td>
+					<td>{{app.status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
